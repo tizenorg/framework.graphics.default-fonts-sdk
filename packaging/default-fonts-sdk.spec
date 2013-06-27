@@ -2,7 +2,7 @@
 Name:       default-fonts-sdk
 Summary:    free fonts for Tizen SDK
 Version:    1.2.2.0
-Release:    14
+Release:    15
 Group:      TO_BE/FILLED_IN
 License:    TO BE FILLED IN
 Source0:    %{name}-%{version}.tar.gz
