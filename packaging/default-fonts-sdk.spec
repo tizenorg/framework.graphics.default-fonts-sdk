@@ -20,6 +20,8 @@ cp %{SOURCE1001} .
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/license
+cp LICENSE %{buildroot}/usr/share/license/%{name}
 
 mkdir -p %{buildroot}%{_datadir}/fonts && cp -a fonts %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_datadir}/fallback_fonts && cp -a fallback_fonts %{buildroot}%{_datadir}
@@ -29,4 +31,4 @@ mkdir -p %{buildroot}%{_datadir}/fallback_fonts && cp -a fallback_fonts %{buildr
 %defattr(0644,root,root,-)
 %{_datadir}/fonts/*
 %{_datadir}/fallback_fonts/*
-
+/usr/share/license/%{name}
