@@ -1,8 +1,8 @@
 #default-fonts-sdk
 Name:       default-fonts-sdk
 Summary:    fonts for Tizen SDK
-Version:    1.2.3.2
-Release:    2
+Version:    1.3.3
+Release:    1
 Group:      TO_BE/FILLED_IN
 License:    Apache-2.0 and GPL-2.0-with-font-exception
 Source0:    %{name}-%{version}.tar.gz
@@ -20,17 +20,18 @@ This package is maintained by SDK team
 cp %{SOURCE1001} .
 
 %install
-%if "%{?tizen_profile_name}" == "wearable"
+rm -rf %{buildroot}
+%if 0%{?sec_product_feature_profile_wearable}
     export TARGET=wearable
 %else
     export TARGET=mobile
 %endif
 
-rm -rf %{buildroot}
-
 mkdir -p %{buildroot}/usr/share/license && cp LICENSE %{buildroot}/usr/share/license/%{name}
-mkdir -p %{buildroot}%{_datadir}/fonts && cp -a $TARGET/fonts %{buildroot}%{_datadir}
-mkdir -p %{buildroot}%{_datadir}/fallback_fonts && cp -a $TARGET/fallback_fonts %{buildroot}%{_datadir}
+mkdir -p %{buildroot}%{_datadir}/fonts && cp -a common/fonts %{buildroot}%{_datadir}
+#cp -a $TARGET/fonts %{buildroot}%{_datadir}
+mkdir -p %{buildroot}%{_datadir}/fallback_fonts && cp -a common/fallback_fonts %{buildroot}%{_datadir}
+#cp -a $TARGET/fallback_fonts %{buildroot}%{_datadir}
 
 %post
 /usr/bin/fc-cache -f
